@@ -1,10 +1,10 @@
 const wrapper = document.querySelector('.wrapper');
 const loginLink = document.querySelector('.login-link');
 const registerLink = document.querySelector('.register-link');
-// const parallax = document.querySelector('.parallax')
+const parallax = document.querySelector('.parallax')
 const btnPopup = document.querySelector('.btnLogin-popup');
 const btnClose = document.querySelector('.icon-close');
-// const text = document.getElementById('text');
+const text = document.getElementById('parallax-text');
 
 registerLink.addEventListener('click', () => {
     wrapper.classList.add('active');
@@ -16,16 +16,16 @@ loginLink.addEventListener('click', () => {
 
 btnPopup.addEventListener('click', () => {
     wrapper.classList.add('active-popup');
-    // parallax.classList.add('active-popup');
+    parallax.classList.add('active-popup');
 });
 
 btnClose.addEventListener('click', () => {
     wrapper.classList.remove('active-popup');
-    // parallax.classList.remove('active-popup');
+    parallax.classList.remove('active-popup');
 });
 
-// window.addEventListener('scroll', () => {
-//     let value = window.scrollY;
+window.addEventListener('scroll', () => {
+    let value = window.scrollY;
 
-//     text.style.marginBottom = value * 2.5 + 'px';
-// });
+    text.style.marginBottom = value * 2.5 + 'px';
+});
