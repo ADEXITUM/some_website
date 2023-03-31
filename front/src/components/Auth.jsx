@@ -1,50 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+import React, { useState } from "react"
 
-<head>
-    <meta charset="UTF-8"a>
-    <meta name="viewpoint" content="width=device-width,
-    initial-scale=1.0">
-    <title>Some Website</title>
-    <link rel="stylesheet" href="style.css">    
-</head>
+import '../assets/css/style.css'
 
-<body>
-    <header>
-        <h2 class="logo">ADEXITUM</h2>
-        <nav class="navigation">
-            <a href="#">Home</a>
-            <a href="#">Services</a>
-            <a href="#">Contacts</a>
-            <a href="#">About</a>
-            <button class="btnLogin-popup">Login</button>
-        </nav>
-    </header>
-      
-    <div class="wrapper">
-        <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span>
+const Auth = function(){
+    function closeAuthMenu(){
+        document.querySelector('.authmenu').classList.remove('active-popup')
+        const timer = ms => new Promise(res => setTimeout(res, ms))
+        setTimeout(function timer() {
+            document.querySelector('.parallax').classList.remove('active-popup')
+        }, 160);
+    }
+
+    const [switchToggled, setSwitchToggled] = useState(false)
+
+    function ToggleSwitch() {
+        return switchToggled ? setSwitchToggled(false) : setSwitchToggled(true) 
+    }
+
+    return (
+    <div class="authmenu" id={ switchToggled ? "register" : "login"}>
+        <span class="icon-close" onClick={closeAuthMenu}><ion-icon name="close-outline"></ion-icon></span>
         <div class="form-box login">
             <h2>Login</h2>
             <form action="#">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="email" required>
+                    <input type="email" required/>
                     <label>Email</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" required>
+                    <input type="password" required/>
                     <label>Password</label>
                 </div>
                 <div class="remember-forgotten">
-                    <label><input type="checkbox"> Remember me</label>
+                    <label><input type="checkbox"/> Remember me</label>
                     <a href="#">Forgot password?</a>
                 </div>
                 <button type="submit" class="btn">Login</button>
                 <div class="login-register">
                     <p> Don't have an account?
                         <a href="#"
-                        class="register-link">Register</a></p>
+                        class="register-link" onClick={ToggleSwitch}> Register</a></p>
                 </div>
             </form>
         </div>
@@ -53,44 +50,34 @@
             <form action="#">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                    <input type="username" required>
+                    <input type="username" required/>
                     <label>Username</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="email" required>
+                    <input type="email" required/>
                     <label>Email</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" required>
+                    <input type="password" required/>
                     <label>Password</label>
                 </div>
                 <div class="remember-forgotten">
-                    <label class="terms"><input type="checkbox"> I agree to the <a href="#">terms & conditions</a>
+                    <label class="terms"><input type="checkbox"/> I agree to the <a href="#">terms & conditions</a>
                     </label>
                 </div>
                 <button type="submit" class="btn">Register</button>      
                 <div class="login-register">
                     <p> Already have an account? 
                         <a href="#" 
-                        class="login-link">Login</a>
+                        class="login-link" onClick={ToggleSwitch}> Login</a>
                     </p>
                 </div>         
             </form>
         </div>
-    </div> 
-    
-    <section class="parallax">
-        <h2 id="parallax-text">Some Website</h2>
-    </section>
-    <section class="sec">
-        <h2></h2>
-    </section>
+    </div>
+    )
+}
 
-    <script src="script.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</body>
-
-</html>
+export default Auth
