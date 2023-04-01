@@ -1,19 +1,13 @@
 package storage
 
 import (
+	"back/entities"
 	"fmt"
 	"log"
 
 	_ "github.com/lib/pq"
 	"xorm.io/xorm"
 )
-
-type User struct {
-	Id       int64
-	Name     string
-	Email    string
-	Password string `json:"-"`
-}
 
 func CreateDBEngine() (*xorm.Engine, error) {
 	connectionInfo := fmt.Sprintf(
@@ -35,7 +29,7 @@ func CreateDBEngine() (*xorm.Engine, error) {
 		return nil, err
 	}
 
-	if err := engine.Sync(new(User)); err != nil {
+	if err := engine.Sync(new(entities.User)); err != nil {
 		log.Printf("data.CreateDBEngine #3:\nError: %s\n\n", err.Error())
 		return nil, err
 	}
